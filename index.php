@@ -76,7 +76,431 @@ $companyClients = [
   <!-- Iconos -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- CSS -->
-  <link rel="stylesheet" href="./styles.css">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap");
+
+    /* Root CSS */
+    :root {
+      --light-background: #f6f7f9;
+      --border-radius: 48px;
+      --border-radius-mobile: 24px;
+      --cs-color: #ff6433;
+      --primary-text: #383838;
+      --secondary-text: #606060;
+      --dominant-color: #f6f7f9;
+      --transition: all 0.3s ease;
+    }
+
+    /* Reset CSS */
+    * {
+      min-width: 0;
+      font: inherit;
+      margin: 0;
+      padding: 0;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    img,
+    video,
+    svg {
+      display: block;
+      height: auto;
+      max-width: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      padding-bottom: 100px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-wrap: balance;
+      color: var(--primary-text);
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: 32px;
+      }
+    }
+
+    p {
+      text-wrap: pretty;
+    }
+
+    /* Custom CSS */
+    a {
+      transition: all 0.3s ease;
+    }
+
+    html {
+      font-family: "Atkinson Hyperlegible", Sans-serif;
+      background-color: var(--light-background);
+      color: var(--secondary-text);
+      font-size: 18px;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .banner {
+      -o-object-fit: cover;
+      object-fit: cover;
+      width: 100%;
+      height: 50vh;
+      filter: drop-shadow(0 0 3em var(--dominant-color));
+    }
+
+    @media screen and (max-width: 1240px) {
+      .banner {
+        border-radius: 0 0 24px 24px;
+      }
+    }
+
+    .container {
+      background-color: white;
+      min-height: 150px;
+      border-radius: var(--border-radius);
+      padding: 32px;
+    }
+
+    .back-button {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.3137254902);
+      padding: 10px;
+      border-radius: var(--border-radius-mobile);
+      transition: var(--transition);
+    }
+
+    .back-button:hover {
+      background-color: rgba(0, 0, 0, 0.5019607843);
+    }
+
+    .back-button .bi {
+      font-size: 32px;
+    }
+
+    .slick-slide {
+      margin-left: 27px;
+    }
+
+    /* the parent */
+    .slider {
+      margin-left: -27px;
+    }
+
+    .clase-card {
+      display: grid;
+      gap: 10px;
+      border-radius: 24px;
+      overflow: hidden;
+      background-color: var(--light-background);
+      cursor: grabbing;
+    }
+
+    .clase-card div {
+      padding: 15px;
+    }
+
+    .clase-card div h3 {
+      font-size: 36px;
+    }
+
+    .clase-card div a {
+      width: 100%;
+      margin-top: 3%;
+      height: 60px;
+      background: var(--cs-color);
+      border-radius: 10px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 25px;
+      text-align: center;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      place-content: space-evenly;
+      text-decoration: none;
+    }
+
+    .clase-card div a:hover {
+      color: var(--cs-color);
+      background-color: white;
+      border: solid 1px var(--cs-color);
+    }
+
+    .company-intro {
+      display: flex;
+      gap: 20px;
+      padding: 20px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      transform: translateY(-50%);
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .company-intro .company-info {
+      display: flex;
+      gap: 20px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .company-intro .company-info {
+        display: grid;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    .company-intro .logo {
+      max-width: 150px;
+      border-radius: var(--border-radius);
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+
+    @media screen and (max-width: 600px) {
+      .company-intro .logo {
+        display: grid;
+        text-align: center;
+        justify-content: center;
+        margin: auto;
+      }
+    }
+
+    .company-intro #contact-mobile {
+      display: none;
+    }
+
+    .company-intro ul {
+      display: grid;
+      list-style: none;
+      gap: 10px;
+    }
+
+    .company-intro ul a {
+      text-decoration: none;
+      color: var(--primary-text);
+    }
+
+    .company-intro ul a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 600px) {
+      .company-intro ul {
+        justify-content: center;
+      }
+    }
+
+    @media screen and (max-width: 1100px) {
+      .company-intro {
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .company-intro #contact-desktop {
+        display: none;
+      }
+
+      .company-intro #contact-mobile {
+        display: flex;
+        gap: 20px;
+        margin: 20px auto 0 auto;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media screen and (max-width: 1240px) {
+      .company-intro {
+        margin: 0 20px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .company-intro .logo {
+        max-width: 100px;
+        border-radius: var(--border-radius-mobile);
+      }
+    }
+
+    .company-intro span {
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    @media screen and (max-width: 768px) {
+      .company-intro span {
+        font-size: 20px;
+      }
+    }
+
+    .company-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      max-width: 1200px;
+      padding: 20px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    @media screen and (max-width: 1100px) {
+      .company-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .company-wrapper .info-wrapper {
+      display: grid;
+      gap: 20px;
+    }
+
+    .company-wrapper .info-wrapper .about-container {
+      display: grid;
+    }
+
+    .company-wrapper .info-wrapper .gallery-container .gallery-item {
+      overflow: hidden;
+      border-radius: var(--border-radius-mobile);
+    }
+
+    .company-wrapper .info-wrapper .gallery-container .gallery-item .gallery-image {
+      -o-object-fit: cover;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      transition: var(--transition);
+    }
+
+    .company-wrapper .info-wrapper .gallery-container .gallery-item .gallery-image:hover {
+      opacity: 0.7;
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+
+    .company-wrapper .navigation-container {
+      height: 100%;
+    }
+
+    .company-wrapper .navigation-container .navigation-sticky {
+      position: sticky;
+      top: 32px;
+    }
+
+    .company-wrapper .navigation-container .navigation-sticky ul {
+      display: grid;
+      list-style: disc;
+      margin-left: 16px;
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .company-wrapper .navigation-container .navigation-sticky ul a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 1100px) {
+      .company-wrapper .navigation-container .navigation-sticky ul {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .company-wrapper .navigation-container .navigation-sticky ul {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .company-wrapper .navigation-container .navigation-sticky ul {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .company-wrapper .navigation-container .navigation-sticky ul a {
+      text-decoration: none;
+      color: var(--secondary-text);
+      transition: var(--transition);
+    }
+
+    .company-wrapper .navigation-container .navigation-sticky ul a:hover {
+      color: var(--primary-text);
+    }
+
+    @media screen and (max-width: 1100px) {
+      .company-wrapper .navigation-container .navigation-sticky {
+        position: inherit;
+      }
+    }
+
+    #mentoria a {
+      width: 100%;
+      margin-top: 3%;
+      height: 60px;
+      background: var(--cs-color);
+      border-radius: 10px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 25px;
+      text-align: center;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      place-content: space-evenly;
+      text-decoration: none;
+    }
+
+    #mentoria a:hover {
+      color: var(--cs-color);
+      background-color: white;
+      border: solid 1px var(--cs-color);
+    }
+
+    .exito-item {
+      border-radius: var(--border-radius-mobile);
+      overflow: hidden;
+    }
+
+    iframe {
+      border-radius: var(--border-radius-mobile);
+    }
+
+    /*# sourceMappingURL=styles.css.map */
+  </style>
   <!-- Slider library -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 </head>
@@ -393,7 +817,29 @@ $companyClients = [
   </main>
   <!-- Color Thief from banner -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
-  <script src="./colorthief.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const img = document.querySelector('.banner');
+      const colorThief = new ColorThief();
+
+      img.addEventListener('load', function() {
+        // Obtén el color predominante
+        const dominantColor = colorThief.getColor(img);
+        const colorString = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
+
+        // Define la variable CSS en :root
+        document.documentElement.style.setProperty('--dominant-color', colorString);
+      });
+
+      // Si la imagen ya está cargada (por ejemplo, si no es la primera vez que se accede a la página)
+      if (img.complete) {
+        const dominantColor = colorThief.getColor(img);
+        const colorString = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
+
+        document.documentElement.style.setProperty('--dominant-color', colorString);
+      }
+    });
+  </script>
   <!-- Slider -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
